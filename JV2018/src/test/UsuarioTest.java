@@ -9,6 +9,7 @@
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Calendar;
@@ -133,12 +134,24 @@ public class UsuarioTest {
 	// Test's CON DATOS NO VALIDOS
 
 	@Test
+	public void testSetNifNull() {
+		try {
+			usuario2.setNif(null);
+			fail("No debe llegar aquí...");
+		} 
+		catch (AssertionError e) { 
+			assertTrue(usuario2.getNif() != null);
+		}
+	}
+	
+	@Test
 	public void testSetNombreNull() {
 		try {
 			usuario2.setNombre(null);
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
+			assertTrue(usuario2.getNombre() != null);
 		}
 	}
 	
@@ -149,6 +162,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
+			assertTrue(usuario2.getApellidos() != null);
 		}
 	}
 	
@@ -159,6 +173,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
+			assertTrue(usuario2.getDomicilio() != null);
 		}
 	}
 	
@@ -169,6 +184,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
+			assertTrue(usuario2.getCorreo() != null);
 		}
 	}
 	
@@ -179,6 +195,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
+			assertTrue(usuario2.getFechaNacimiento() != null);
 		}
 	}
 	
@@ -197,6 +214,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) {	
+			assertTrue(usuario2.getFechaAlta() != null);
 		}
 	}
 
@@ -211,10 +229,11 @@ public class UsuarioTest {
 	@Test
 	public void testSetClaveAccesoNull() {
 		try {
-			usuario2.setNif(null);
+			usuario2.setClaveAcceso(null);
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
+			assertTrue(usuario2.getClaveAcceso() != null);
 		}
 	}
 
@@ -231,6 +250,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 		
+			assertTrue(usuario2.getRol() != null);
 		}
 	}
 
