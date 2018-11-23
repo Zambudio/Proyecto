@@ -156,6 +156,12 @@ public class UsuarioTest {
 	}
 	
 	@Test
+	public void testSetNombreBlanco() {
+			usuario2.setNombre("  ");	
+			assertEquals(usuario2.getNombre(), "Nombre");
+	}
+	
+	@Test
 	public void testSetApellidosNull() {
 		try {
 			usuario2.setApellidos(null);
@@ -164,6 +170,12 @@ public class UsuarioTest {
 		catch (AssertionError e) { 
 			assertTrue(usuario2.getApellidos() != null);
 		}
+	}
+	
+	@Test
+	public void testSetApellidosBlanco() {
+			usuario2.setApellidos("  ");	
+			assertEquals(usuario2.getApellidos(), "Apellidos");
 	}
 	
 	@Test
@@ -178,6 +190,12 @@ public class UsuarioTest {
 	}
 	
 	@Test
+	public void testSetDomicilioBlanco() {
+			usuario2.setDomicilio("  ");	
+			assertEquals(usuario2.getDomicilio(), "Domicilio");
+	}
+	
+	@Test
 	public void testSetCorreoNull() {
 		try {
 			usuario2.setCorreo(null);
@@ -186,6 +204,12 @@ public class UsuarioTest {
 		catch (AssertionError e) { 
 			assertTrue(usuario2.getCorreo() != null);
 		}
+	}
+	
+	@Test
+	public void testSetCorreoBlanco() {
+			usuario2.setCorreo("  ");	
+			assertEquals(usuario2.getCorreo(), "correo@correo.es");
 	}
 	
 	@Test
