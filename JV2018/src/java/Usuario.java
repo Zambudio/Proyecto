@@ -12,6 +12,7 @@
  */
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Usuario {
 
@@ -28,14 +29,25 @@ public class Usuario {
 			"NORMAL",
 	"ADMINSTRADOR"};
 
-	public Usuario(String nif, String nombre, String apellidos, 
-			String domicilio, String correo, Calendar fechaNacimiento, 
-			Calendar fechaAlta, String claveAcceso, String rol) {
 
-		setNif(nif);
-		setNombre(nombre);
-		
-		setApellidos(apellidos);
+
+	/**
+	 * Constructor convencional
+	 * @param nif
+	 * @param nombre
+	 * @param apellidos
+	 * @param domicilio
+	 * @param correo
+	 * @param fechaNacimiento
+	 * @param fechaAlta
+	 * @param claveAcceso
+	 * @param rol
+	 */
+	public Usuario(String nif, String nombre, String apellidos, String domicilio, String correo,
+			Calendar fechaNacimiento, Calendar fechaAlta, String claveAcceso, String rol) {
+		this.nif = nif;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
 		this.domicilio = domicilio;
 		this.correo = correo;
 		this.fechaNacimiento = fechaNacimiento;
@@ -45,31 +57,21 @@ public class Usuario {
 	}
 
 
-	private boolean nifValido(String nif) {
-		if (nif.equals("")) {
-			return false;
-		}
-		if (nif.equals("    ")) {
-			return false;
-		}
-		return false;
-
-		
-	}
 
 
 	public Usuario() {
-
-		this.nif = "000000000T";
+		this.nif = "00000000T";
 		this.nombre = "Nombre";
-		this.apellidos = null;
+		this.apellidos = "Apellidos";
 		this.domicilio = "Domicilio";
-		this.correo = null;
-		this.fechaNacimiento = null;
-		this.fechaAlta = null;
-		this.claveAcceso = null;
-		this.rol = null;
+		this.correo = "corre@cooreo.es";
+		this.fechaNacimiento = new GregorianCalendar(); // Hoy
+		this.fechaAlta = new GregorianCalendar();
+		this.claveAcceso = "Miau#0";
+		this.rol = ROLES[1];
 	}
+
+
 
 
 	public String getNif() {
@@ -77,10 +79,7 @@ public class Usuario {
 	}
 
 	public void setNif(String nif) {
-		assert nif != null;	
-		if (nifValido(nif)) {
-			this.nif = nif;
-		}
+		this.nif = nif;
 	}
 
 	public String getNombre() {
@@ -89,15 +88,16 @@ public class Usuario {
 
 	public void setNombre(String nombre) {
 		assert nombre != null;
-		if (nombreValido(nombre)) {
+		if (nombreValido(nombre)) {	
 			this.nombre = nombre;
 		}
 	}
 
-	
 	private boolean nombreValido(String nombre) {
 		return !nombre.matches("[ ]+");
 	}
+
+
 
 
 	public String getApellidos() {
@@ -105,17 +105,8 @@ public class Usuario {
 	}
 
 	public void setApellidos(String apellidos) {
-		assert apellidos != null;
-		if (apellidosValido(apellidos)) {
-			this.apellidos = apellidos;
-		}
+		this.apellidos = apellidos;
 	}
-
-	private boolean apellidosValido(String apellidos2) {
-		
-		return false;
-	}
-
 
 	public String getDomicilio() {
 		return domicilio;
