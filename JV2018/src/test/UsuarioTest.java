@@ -157,7 +157,7 @@ public class UsuarioTest {
 	
 	@Test
 	public void testSetNombreBlanco() {
-			usuario2.setNombre("  ");	
+			usuario2.setNombre(" ");	
 			assertEquals(usuario2.getNombre(), "Nombre");
 	}
 	
