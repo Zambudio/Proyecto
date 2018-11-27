@@ -57,8 +57,6 @@ public class Usuario {
 	}
 
 
-
-
 	public Usuario() {
 		this.nif = "00000000T";
 		this.nombre = "Nombre";
@@ -71,15 +69,19 @@ public class Usuario {
 		this.rol = ROLES[1];
 	}
 
-
-
-
 	public String getNif() {
 		return nif;
 	}
 
 	public void setNif(String nif) {
-		this.nif = nif;
+		assert nif != null;
+		if (nifValido(nif)) {	
+			this.nif = nif;
+		}	
+	}
+
+	private boolean nifValido(String nif) {
+		return !nif.matches("[ ]+");
 	}
 
 	public String getNombre() {
@@ -96,9 +98,6 @@ public class Usuario {
 	private boolean nombreValido(String nombre) {
 		return !nombre.matches("[ ]+");
 	}
-
-
-
 
 	public String getApellidos() {
 		return apellidos;
@@ -129,7 +128,14 @@ public class Usuario {
 	}
 
 	public void setFechaNacimiento(Calendar fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+		assert fechaNacimiento != null;
+		if (fechaNacimientoValido(fechaNacimiento)) {	
+			this.fechaNacimiento = fechaNacimiento;
+		}	
+	}
+
+	private boolean fechaNacimientoValido(Calendar fechaNacimiento) {
+		return fechaNacimiento.before(new GregorianCalendar());
 	}
 
 	public Calendar getFechaAlta() {
@@ -155,9 +161,6 @@ public class Usuario {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-
-
-
 
 
 } // class
