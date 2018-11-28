@@ -9,7 +9,6 @@
 
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Calendar;
@@ -94,14 +93,14 @@ public class UsuarioTest {
 	}
 	@Test
 	public void testSetFechaNacimiento() {
-		usuario2.setFechaNacimiento(new GregorianCalendar(2000, 03, 21));
-		assertEquals(usuario2.getFechaNacimiento(), new GregorianCalendar(2000, 03, 21));
+		usuario2.setFechaNacimiento(new GregorianCalendar(2000, 3, 21));
+		assertEquals(usuario2.getFechaNacimiento(), new GregorianCalendar(2000, 3, 21));
 	}
 	
 	@Test
 	public void testSetFechaAlta() {
-		usuario2.setFechaAlta(new GregorianCalendar(2018,11,17));
-		assertEquals(usuario2.getFechaAlta(), new GregorianCalendar(2018,10,17));
+		usuario2.setFechaAlta(new GregorianCalendar(2017,9,17));
+		assertEquals(usuario2.getFechaAlta(), new GregorianCalendar(2017,9,17));
 	}
 
 	@Test
@@ -127,23 +126,12 @@ public class UsuarioTest {
 				"fechaNacimiento: 2000.3.21\n" +
 				"fechaAlta:       2018.10.17\n" +
 				"claveAcceso:     Miau#12\n" +
-				"rol:             INVITADO\n"
+				"rol:             NORMAL\n"
 			);
 	}
 
 	// Test's CON DATOS NO VALIDOS
 
-	@Test
-	public void testSetNifNull() {
-		try {
-			usuario2.setNif(null);
-			fail("No debe llegar aquí...");
-		} 
-		catch (AssertionError e) { 
-			assertTrue(usuario2.getNif() != null);
-		}
-	}
-	
 	@Test
 	public void testSetNombreNull() {
 		try {
@@ -151,14 +139,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
-			assertTrue(usuario2.getNombre() != null);
 		}
-	}
-	
-	@Test
-	public void testSetNombreBlanco() {
-			usuario2.setNombre(" ");	
-			assertEquals(usuario2.getNombre(), "Nombre");
 	}
 	
 	@Test
@@ -168,14 +149,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
-			assertTrue(usuario2.getApellidos() != null);
 		}
-	}
-	
-	@Test
-	public void testSetApellidosBlanco() {
-			usuario2.setApellidos("  ");	
-			assertEquals(usuario2.getApellidos(), "Apellidos");
 	}
 	
 	@Test
@@ -185,14 +159,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
-			assertTrue(usuario2.getDomicilio() != null);
 		}
-	}
-	
-	@Test
-	public void testSetDomicilioBlanco() {
-			usuario2.setDomicilio("  ");	
-			assertEquals(usuario2.getDomicilio(), "Domicilio");
 	}
 	
 	@Test
@@ -202,14 +169,7 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
-			assertTrue(usuario2.getCorreo() != null);
 		}
-	}
-	
-	@Test
-	public void testSetCorreoBlanco() {
-			usuario2.setCorreo("  ");	
-			assertEquals(usuario2.getCorreo(), "correo@correo.es");
 	}
 	
 	@Test
@@ -219,7 +179,6 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
-			assertTrue(usuario2.getFechaNacimiento() != null);
 		}
 	}
 	
@@ -238,26 +197,22 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) {	
-			assertTrue(usuario2.getFechaAlta() != null);
 		}
 	}
 
 	@Test
 	public void testSetFechaAltaFuturo() {	
 			usuario1.setFechaAlta(new GregorianCalendar(3020, 9, 10));
-			assertEquals(usuario1.getFechaAlta().get(Calendar.YEAR), 2018);
-			assertEquals(usuario1.getFechaAlta().get(Calendar.MONTH), 10);
-			assertEquals(usuario1.getFechaAlta().get(Calendar.DATE), 17);
+			assertEquals(usuario1.getFechaAlta(), new GregorianCalendar(2018,10,17));
 	}
 	
 	@Test
 	public void testSetClaveAccesoNull() {
 		try {
-			usuario2.setClaveAcceso(null);
+			usuario2.setNif(null);
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 
-			assertTrue(usuario2.getClaveAcceso() != null);
 		}
 	}
 
@@ -274,7 +229,6 @@ public class UsuarioTest {
 			fail("No debe llegar aquí...");
 		} 
 		catch (AssertionError e) { 		
-			assertTrue(usuario2.getRol() != null);
 		}
 	}
 

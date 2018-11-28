@@ -25,11 +25,11 @@ public class Usuario {
 	private Calendar fechaAlta;
 	private String claveAcceso;
 	private String rol;
-	public final static String[] ROLES = {"INVITADO", 
+	public final static String[] ROLES = {
+			"INVITADO",
 			"NORMAL",
-	"ADMINSTRADOR"};
-
-
+			"ADMINSTRADOR"
+			};
 
 	/**
 	 * Constructor convencional
@@ -45,17 +45,17 @@ public class Usuario {
 	 */
 	public Usuario(String nif, String nombre, String apellidos, String domicilio, String correo,
 			Calendar fechaNacimiento, Calendar fechaAlta, String claveAcceso, String rol) {
-		this.nif = nif;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.domicilio = domicilio;
-		this.correo = correo;
-		this.fechaNacimiento = fechaNacimiento;
-		this.fechaAlta = fechaAlta;
-		this.claveAcceso = claveAcceso;
-		this.rol = rol;
+		
+		setNif(nif);
+		setNombre(nombre);
+		setApellidos(apellidos);
+		setDomicilio(domicilio);
+		setCorreo(correo);
+		setFechaNacimiento(fechaNacimiento);
+		setFechaAlta(fechaAlta);
+		setClaveAcceso(claveAcceso);
+		setRol(rol);
 	}
-
 
 	public Usuario() {
 		this.nif = "00000000T";
@@ -63,7 +63,7 @@ public class Usuario {
 		this.apellidos = "Apellidos";
 		this.domicilio = "Domicilio";
 		this.correo = "corre@cooreo.es";
-		this.fechaNacimiento = new GregorianCalendar(); // Hoy
+		this.fechaNacimiento = new GregorianCalendar();
 		this.fechaAlta = new GregorianCalendar();
 		this.claveAcceso = "Miau#0";
 		this.rol = ROLES[1];
@@ -104,7 +104,15 @@ public class Usuario {
 	}
 
 	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+		assert apellidos != null;
+		if (apellidosValido(apellidos)) {	
+			this.apellidos = apellidos;
+		}
+		
+	}
+
+	private boolean apellidosValido(String apellidos) {
+		return !apellidos.matches("[ ]+");
 	}
 
 	public String getDomicilio() {
@@ -112,7 +120,14 @@ public class Usuario {
 	}
 
 	public void setDomicilio(String domicilio) {
-		this.domicilio = domicilio;
+		assert domicilio != null;
+		if (domicilioValido(domicilio)) {	
+			this.domicilio = domicilio;
+		}
+	}
+
+	private boolean domicilioValido(String domicilio) {
+		return !domicilio.matches("[ ]+");
 	}
 
 	public String getCorreo() {
@@ -120,7 +135,14 @@ public class Usuario {
 	}
 
 	public void setCorreo(String correo) {
-		this.correo = correo;
+		assert correo != null;
+		if (correoValido(correo)) {	
+			this.correo = correo;
+		}
+	}
+
+	private boolean correoValido(String correo) {
+		return !correo.matches("[ ]+");
 	}
 
 	public Calendar getFechaNacimiento() {
@@ -129,12 +151,12 @@ public class Usuario {
 
 	public void setFechaNacimiento(Calendar fechaNacimiento) {
 		assert fechaNacimiento != null;
-		if (fechaNacimientoValido(fechaNacimiento)) {	
+		if (fechaNacimientoValida(fechaNacimiento)) {	
 			this.fechaNacimiento = fechaNacimiento;
 		}	
 	}
 
-	private boolean fechaNacimientoValido(Calendar fechaNacimiento) {
+	private boolean fechaNacimientoValida(Calendar fechaNacimiento) {
 		return fechaNacimiento.before(new GregorianCalendar());
 	}
 
@@ -143,7 +165,14 @@ public class Usuario {
 	}
 
 	public void setFechaAlta(Calendar fechaAlta) {
-		this.fechaAlta = fechaAlta;
+		assert fechaAlta != null;
+		if (fechaAltaValida(fechaAlta)) {	
+			this.fechaAlta = fechaAlta;
+		}	
+	}
+
+	private boolean fechaAltaValida(Calendar fechaAlta) {
+		return !fechaAlta.after(new GregorianCalendar());
 	}
 
 	public String getClaveAcceso() {
@@ -151,7 +180,14 @@ public class Usuario {
 	}
 
 	public void setClaveAcceso(String claveAcceso) {
-		this.claveAcceso = claveAcceso;
+		assert claveAcceso != null;
+		if (claveAccesoValida(claveAcceso)) {	
+			this.claveAcceso = claveAcceso;
+		}	
+	}
+
+	private boolean claveAccesoValida(String claveAcceso) {
+		return !claveAcceso.matches("[ ]+");
 	}
 
 	public String getRol() {
@@ -159,9 +195,16 @@ public class Usuario {
 	}
 
 	public void setRol(String rol) {
-		this.rol = rol;
+		assert rol != null;
+		if (rolValida(rol)) {	
+			this.rol = rol;
+		}
 	}
 
+	private boolean rolValida(String rol) {
+		return !rol.matches("[ ]+");
+	}
 
+	
 } // class
 
